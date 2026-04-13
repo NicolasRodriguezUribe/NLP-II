@@ -1,5 +1,14 @@
 # NLP-II: cuadernos docentes de procesamiento del lenguaje natural con Transformers y LLM
 
+## Introducción
+Autor: Nicolás Rodríguez Uribe
+Fecha de última actualización: 13/04/2026
+Material docente en abierto de la Universidad Rey Juan Carlos
+Asignatura: Procesamiento del Lenguaje Natural II
+Grado en Inteligencia Artificial
+Licencia: **GNU General Public License, versión 3 (GPL-3.0)**.
+Depósito URJC: https://burjcdigital.urjc.es/items/e7f1b47d-be39-4e11-ab68-487bc9278099
+
 ## Descripción
 Este repositorio reúne cuadernos Jupyter para la docencia práctica de la asignatura `NLP-II`. El conjunto cubre tareas de procesamiento del lenguaje natural basadas en modelos Transformer y modelos generativos, con materiales orientados a entrenamiento, evaluación, comparación de estrategias y experimentación reproducible.
 
@@ -21,13 +30,13 @@ El repositorio contiene los siguientes tipos de materiales:
 - Versiones diferenciadas para alumnado y profesorado en varias prácticas.
 - Un script auxiliar en `scripts/create_dialog_chatbot_notebooks.py` para generar notebooks de diálogo/chatbot.
 - Metadatos de empaquetado en `pyproject.toml`.
-- Un archivo de licencia `LICENSE.txt`.
+- Un archivo de licencia `LICENSE`.
 
 Estructura del repositorio:
 
 ```text
 .
-├── LICENSE.txt
+├── LICENSE
 ├── notebooks/
 │   ├── advanced/
 │   ├── classification/
@@ -108,6 +117,7 @@ Convenciones observadas:
 
 - `STUDENT`: versión para alumnado, con celdas incompletas, guías o `TODO`.
 - `SOLVED`: versión resuelta o de referencia.
+- `RESOLVED` o `Resolved`: variante equivalente a versión resuelta.
 
 Carpetas temáticas utilizadas:
 
@@ -133,7 +143,7 @@ Tabla de notebooks organizados por carpeta:
 | `notebooks/advanced/Knowledge_Distillation_Text_Classification.ipynb` | Único | Destilación de conocimiento para clasificación de texto | Mide exactitud, latencia y memoria |
 | `notebooks/translation/NMT_Marian_ES_EN_SOLVED.ipynb` | SOLVED | Traducción automática español-inglés con MarianMT | Compara `greedy`, `beam search` y `sampling` |
 | `notebooks/translation/NMT_Marian_ES_EN_STUDENT.ipynb` | STUDENT | Traducción automática español-inglés con MarianMT | `TODO` redactados en español |
-| `notebooks/advanced/Post_Training_Quantization_and_Benchmarking (1).ipynb` | Único | Cuantización posentrenamiento para inferencia con LLM | Compara FP16, 8-bit y 4-bit; nombre de archivo no normalizado |
+| `notebooks/advanced/Post_Training_Quantization_and_Benchmarking.ipynb` | Único | Cuantización posentrenamiento para inferencia con LLM | Compara FP16, 8-bit y 4-bit |
 | `notebooks/qa_summarization/QA_Transformers_SOLVED.ipynb` | SOLVED | Sistemas de preguntas y respuestas con Transformers | Incluye mini QA open-domain con recuperación simple |
 | `notebooks/qa_summarization/QA_Transformers_STUDENT.ipynb` | STUDENT | Sistemas de preguntas y respuestas con Transformers | `TODO` redactados en español |
 | `notebooks/advanced/RAG_basics_and_evaluation.ipynb` | Único | Fundamentos de RAG y evaluación básica | Emplea embeddings y FAISS |
@@ -158,4 +168,4 @@ Tabla de notebooks organizados por carpeta:
 - Las prácticas RAG y de benchmarking importan bibliotecas adicionales que no están reflejadas de forma uniforme en la configuración base del proyecto.
 
 ## Licencia
-El repositorio incluye el archivo [`LICENSE.txt`](LICENSE.txt), cuyo encabezado corresponde a la **GNU General Public License, versión 3 (GPL-3.0)**.
+El repositorio incluye el archivo [`LICENSE`](LICENSE), correspondiente a la **GNU General Public License, versión 3 (GPL-3.0)**.
