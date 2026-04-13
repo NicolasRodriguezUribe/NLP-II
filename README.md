@@ -3,15 +3,15 @@
 ## Descripción
 Este repositorio reúne cuadernos Jupyter para la docencia práctica de la asignatura `NLP-II`. El conjunto cubre tareas de procesamiento del lenguaje natural basadas en modelos Transformer y modelos generativos, con materiales orientados a entrenamiento, evaluación, comparación de estrategias y experimentación reproducible.
 
-Los temas detectados en los notebooks incluyen clasificación de sentimiento, inferencia textual, detección de paráfrasis, traducción automática neuronal, sistemas de preguntas y respuestas, resumen automático, generación causal, chatbots, Retrieval-Augmented Generation (RAG), destilación de conocimiento y cuantización posentrenamiento.
+Los temas en los notebooks incluyen clasificación de sentimiento, inferencia textual, detección de paráfrasis, traducción automática neuronal, sistemas de preguntas y respuestas, resumen automático, generación causal, chatbots, Retrieval-Augmented Generation (RAG), destilación de conocimiento y cuantización posentrenamiento.
 
 ## Finalidad docente
 La función principal del repositorio es servir como material de apoyo para asignaturas de PLN.
 
 - Proporciona ejercicios guiados mediante notebooks `STUDENT`, con celdas incompletas y marcas `TODO`.
 - Ofrece soluciones o versiones de referencia mediante notebooks `SOLVED` o `RESOLVED`.
-- Facilitar la reutilización modular por temas.
-- Apoyar la preparación docente, la evaluación continua y el trabajo práctico guiado.
+- Facilita la reutilización modular por temas.
+- Apoya la preparación docente, la evaluación continua y el trabajo práctico guiado.
 
 ## Contenidos
 El repositorio contiene los siguientes tipos de materiales:
@@ -19,22 +19,26 @@ El repositorio contiene los siguientes tipos de materiales:
 - Notebooks de prácticas sobre tareas clásicas de PLN con Transformers.
 - Notebooks de temas avanzados relacionados con RAG, destilación y cuantización.
 - Versiones diferenciadas para alumnado y profesorado en varias prácticas.
-- Un script auxiliar, `create_dialog_chatbot_notebooks.py`, para generar notebooks de diálogo/chatbot.
+- Un script auxiliar en `scripts/create_dialog_chatbot_notebooks.py` para generar notebooks de diálogo/chatbot.
 - Metadatos de empaquetado en `pyproject.toml`.
 - Un archivo de licencia `LICENSE.txt`.
-- Directorios auxiliares `build/` y `nlp_ii.egg-info/`, presentes en la raíz del repositorio.
 
-Estructura observada en la raíz del repositorio:
+Estructura del repositorio:
 
 ```text
 .
-├── *.ipynb
-├── create_dialog_chatbot_notebooks.py
 ├── LICENSE.txt
+├── notebooks/
+│   ├── advanced/
+│   ├── classification/
+│   ├── generation_dialogue/
+│   ├── nli_paraphrase/
+│   ├── qa_summarization/
+│   └── translation/
 ├── pyproject.toml
-├── README.md
-├── build/
-└── nlp_ii.egg-info/
+├── scripts/
+│   └── create_dialog_chatbot_notebooks.py
+└── README.md
 ```
 
 ## Requisitos
@@ -56,16 +60,16 @@ Requisitos verificables a partir de `pyproject.toml`:
 - `nltk>=3.8.1`
 - `fsspec==2024.3.1`
 - `pyarrow-hotfix`
-- `bitsandbytes>=0.43.0` solo cuando el sistema no es Windows, según la condición declarada en el propio `pyproject.toml`
+- `bitsandbytes>=0.43.0` solo cuando el sistema no es Windows, según `pyproject.toml`
 
-Dependencias adicionales en notebooks concretos :
+Dependencias adicionales en notebooks concretos:
 
 - `sentence-transformers`
 - `faiss-cpu`
 - `rank-bm25`
 - `psutil`
 - `tqdm`
-- `sacremoses` como dependencia recomendada por MarianMT en una ejecución observada
+- `sacremoses` como dependencia recomendada por MarianMT
 
 ## Instalación
 La referencia principal para instalar dependencias es `pyproject.toml`.
@@ -96,15 +100,8 @@ pip install bitsandbytes
 Tras activar el entorno, puede iniciarse Jupyter Lab o Jupyter Notebook:
 
 ```bash
-jupyter lab
+jupyter lab notebooks
 ```
-
-Uso docente recomendado:
-
-- Abrir primero los notebooks `STUDENT` cuando la finalidad sea práctica guiada o evaluación.
-- Reservar los notebooks `SOLVED` o `RESOLVED` para preparación del profesorado, corrección, autoestudio posterior o revisión de soluciones.
-- Utilizar los notebooks sin sufijo `STUDENT` o `SOLVED/RESOLVED` como materiales autónomos, normalmente de carácter más avanzado o monográfico.
-- Revisar siempre las primeras celdas de cada notebook, ya que varios materiales incluyen instrucciones específicas para Google Colab, reinicio del entorno o instalación puntual de bibliotecas.
 
 ## Organización de notebooks
 Convenciones observadas:
@@ -112,42 +109,49 @@ Convenciones observadas:
 - `STUDENT`: versión para alumnado, con celdas incompletas, guías o `TODO`.
 - `SOLVED`: versión resuelta o de referencia.
 
-Tabla de notebooks detectados en la raíz del repositorio:
+Carpetas temáticas utilizadas:
 
-| Archivo | Tipo | Tema u objetivo verificable | Observaciones |
+- `notebooks/classification`: clasificación de sentimiento.
+- `notebooks/nli_paraphrase`: inferencia textual y detección de paráfrasis.
+- `notebooks/translation`: traducción automática neuronal.
+- `notebooks/qa_summarization`: preguntas y respuestas y resumen automático.
+- `notebooks/generation_dialogue`: generación causal, chatbots y prácticas de diálogo.
+- `notebooks/advanced`: RAG, destilación de conocimiento y cuantización.
+
+Tabla de notebooks organizados por carpeta:
+
+| Ruta | Tipo | Tema u objetivo verificable | Observaciones |
 |---|---|---|---|
-| `BERT_IMDB_SOLVED.ipynb` | SOLVED | Ajuste fino de BERT para clasificación de sentimiento binaria sobre IMDb | Usa `kagglehub`; orientado a Colab |
-| `BERT_IMDB_STUDENT.ipynb` | STUDENT | Clasificación de sentimiento en IMDb con BERT | Incluye celdas `TODO` |
-| `DIALOG_Chatbot_SOLVED_EN.ipynb` | SOLVED | Construcción de un mini-chatbot con modelo decoder-only | Material en inglés |
-| `DIALOG_Chatbot_STUDENT_EN.ipynb` | STUDENT | Chatbot con modelo decoder-only | Material en inglés con `TODO` |
-| `Generative_Homebrewing_RESOLVED.ipynb` | RESOLVED | Laboratorio generativo con LLM sobre homebrewing | Incluye parafraseo, recetas, chat y clasificación por prompting |
-| `Generative_Homebrewing_STUDENT.ipynb` | STUDENT | Laboratorio generativo con LLM sobre homebrewing | Plantilla con `TODO`; literales de ejemplo en español |
-| `GPT2_Resolved.ipynb` | RESOLVED | Clínica de decodificación para generación creativa en español con GPT-2 | Analiza calidad, diversidad, estabilidad y latencia |
-| `GPT2_Student.ipynb` | STUDENT | Clínica de decodificación con GPT-2 | Requiere completar celdas y gestionar token de Hugging Face |
-| `Knowledge_Distillation_Text_Classification.ipynb` | Único | Destilación de conocimiento para clasificación de texto | Mide exactitud, latencia y memoria |
-| `NMT_Marian_ES_EN_SOLVED.ipynb` | SOLVED | Traducción automática español-inglés con MarianMT | Compara `greedy`, `beam search` y `sampling` |
-| `NMT_Marian_ES_EN_STUDENT.ipynb` | STUDENT | Traducción automática español-inglés con MarianMT | `TODO` redactados en español |
-| `Post_Training_Quantization_and_Benchmarking (1).ipynb` | Único | Cuantización posentrenamiento para inferencia con LLM | Compara FP16, 8-bit y 4-bit; nombre de archivo no normalizado |
-| `QA_Transformers_SOLVED.ipynb` | SOLVED | Sistemas de preguntas y respuestas con Transformers | Incluye mini QA open-domain con recuperación simple |
-| `QA_Transformers_STUDENT.ipynb` | STUDENT | Sistemas de preguntas y respuestas con Transformers | `TODO` redactados en español |
-| `RAG_basics_and_evaluation.ipynb` | Único | Fundamentos de RAG y evaluación básica | Emplea embeddings y FAISS |
-| `RAG_production_hybrid.ipynb` | Único | RAG híbrido con reranking, filtrado por metadatos y defensas frente a inyección | Material avanzado de orientación aplicada |
-| `SUMMARY_Extractive_Abstractive_SOLVED.ipynb` | SOLVED | Resumen automático extractivo y abstractivo | Incluye una métrica ROUGE-1 simplificada |
-| `SUMMARY_Extractive_Abstractive_STUDENT.ipynb` | STUDENT | Resumen automático extractivo y abstractivo | `TODO` redactados en español |
-| `XLMR_Paraphrase_SOLVED.ipynb` | SOLVED | Detección de paráfrasis en PAWS-X español con XLM-RoBERTa | Ajuste fino y evaluación |
-| `XLMR_Paraphrase_STUDENT.ipynb` | STUDENT | Detección de paráfrasis con XLM-RoBERTa | Material en inglés con `TODO` |
-| `XNLI_BETO_SOLVED.ipynb` | SOLVED | Inferencia textual en español con BETO sobre XNLI | Incluye matriz de confusión y análisis de errores |
-| `XNLI_BETO_STUDENT.ipynb` | STUDENT | Inferencia textual en español con BETO sobre XNLI | Versión guiada con instalación explícita para Colab |
+| `notebooks/classification/BERT_IMDB_SOLVED.ipynb` | SOLVED | Ajuste fino de BERT para clasificación de sentimiento binaria sobre IMDb | Usa `kagglehub`; orientado a Colab |
+| `notebooks/classification/BERT_IMDB_STUDENT.ipynb` | STUDENT | Clasificación de sentimiento en IMDb con BERT | Incluye celdas `TODO` |
+| `notebooks/generation_dialogue/DIALOG_Chatbot_SOLVED_EN.ipynb` | SOLVED | Construcción de un mini-chatbot con modelo decoder-only | Material en inglés |
+| `notebooks/generation_dialogue/DIALOG_Chatbot_STUDENT_EN.ipynb` | STUDENT | Chatbot con modelo decoder-only | Material en inglés con `TODO` |
+| `notebooks/generation_dialogue/Generative_Homebrewing_RESOLVED.ipynb` | RESOLVED | Laboratorio generativo con LLM sobre homebrewing | Incluye parafraseo, recetas, chat y clasificación por prompting |
+| `notebooks/generation_dialogue/Generative_Homebrewing_STUDENT.ipynb` | STUDENT | Laboratorio generativo con LLM sobre homebrewing | Plantilla con `TODO`; literales de ejemplo en español |
+| `notebooks/generation_dialogue/GPT2_Resolved.ipynb` | RESOLVED | Clínica de decodificación para generación creativa en español con GPT-2 | Analiza calidad, diversidad, estabilidad y latencia |
+| `notebooks/generation_dialogue/GPT2_Student.ipynb` | STUDENT | Clínica de decodificación con GPT-2 | Requiere completar celdas y gestionar token de Hugging Face |
+| `notebooks/advanced/Knowledge_Distillation_Text_Classification.ipynb` | Único | Destilación de conocimiento para clasificación de texto | Mide exactitud, latencia y memoria |
+| `notebooks/translation/NMT_Marian_ES_EN_SOLVED.ipynb` | SOLVED | Traducción automática español-inglés con MarianMT | Compara `greedy`, `beam search` y `sampling` |
+| `notebooks/translation/NMT_Marian_ES_EN_STUDENT.ipynb` | STUDENT | Traducción automática español-inglés con MarianMT | `TODO` redactados en español |
+| `notebooks/advanced/Post_Training_Quantization_and_Benchmarking (1).ipynb` | Único | Cuantización posentrenamiento para inferencia con LLM | Compara FP16, 8-bit y 4-bit; nombre de archivo no normalizado |
+| `notebooks/qa_summarization/QA_Transformers_SOLVED.ipynb` | SOLVED | Sistemas de preguntas y respuestas con Transformers | Incluye mini QA open-domain con recuperación simple |
+| `notebooks/qa_summarization/QA_Transformers_STUDENT.ipynb` | STUDENT | Sistemas de preguntas y respuestas con Transformers | `TODO` redactados en español |
+| `notebooks/advanced/RAG_basics_and_evaluation.ipynb` | Único | Fundamentos de RAG y evaluación básica | Emplea embeddings y FAISS |
+| `notebooks/advanced/RAG_production_hybrid.ipynb` | Único | RAG híbrido con reranking, filtrado por metadatos y defensas frente a inyección | Material avanzado de orientación aplicada |
+| `notebooks/qa_summarization/SUMMARY_Extractive_Abstractive_SOLVED.ipynb` | SOLVED | Resumen automático extractivo y abstractivo | Incluye una métrica ROUGE-1 simplificada |
+| `notebooks/qa_summarization/SUMMARY_Extractive_Abstractive_STUDENT.ipynb` | STUDENT | Resumen automático extractivo y abstractivo | `TODO` redactados en español |
+| `notebooks/nli_paraphrase/XLMR_Paraphrase_SOLVED.ipynb` | SOLVED | Detección de paráfrasis en PAWS-X español con XLM-RoBERTa | Ajuste fino y evaluación |
+| `notebooks/nli_paraphrase/XLMR_Paraphrase_STUDENT.ipynb` | STUDENT | Detección de paráfrasis con XLM-RoBERTa | Material en inglés con `TODO` |
+| `notebooks/nli_paraphrase/XNLI_BETO_SOLVED.ipynb` | SOLVED | Inferencia textual en español con BETO sobre XNLI | Incluye matriz de confusión y análisis de errores |
+| `notebooks/nli_paraphrase/XNLI_BETO_STUDENT.ipynb` | STUDENT | Inferencia textual en español con BETO sobre XNLI | Versión guiada con instalación explícita para Colab |
 
-## Recomendaciones de uso docente
-- Para estudiantes: comenzar por la versión `STUDENT` correspondiente y completar las celdas en el orden propuesto, sin saltar las secciones de configuración y carga de datos.
-- Para estudiantes: conservar evidencias de ejecución, métricas y observaciones, ya que varios notebooks incluyen fases de análisis de errores, comparación de estrategias o discusión de resultados.
-- Para estudiantes: no asumir que todos los notebooks comparten exactamente las mismas dependencias; conviene revisar la primera sección de cada cuaderno antes de ejecutarlo.
-- Para profesorado: utilizar las versiones `SOLVED/RESOLVED` como solución de referencia, material de apoyo en seminario o base para diseñar rúbricas y entregables.
-- Para profesorado: valorar una secuenciación por bloques, por ejemplo clasificación y NLI, después traducción/QA/resumen y finalmente generación, RAG y optimización de inferencia.
+## Recomendaciones para estudiantes
+- Comenzar por la versión `STUDENT` correspondiente y completar las celdas en el orden propuesto, sin saltar las secciones de configuración y carga de datos.
+- Conservar evidencias de ejecución, métricas y observaciones, ya que varios notebooks incluyen fases de análisis de errores, comparación de estrategias o discusión de resultados.
+- No asumir que todos los notebooks comparten exactamente las mismas dependencias; conviene revisar la primera sección de cada cuaderno antes de ejecutarlo.
 
 ## Notas técnicas
-- `pyproject.toml` sí declara una base de dependencias y fija `Python >= 3.10`.
+- `pyproject.toml` declara una base de dependencias y fija `Python >= 3.10`.
 - Varios notebooks incluyen salidas ejecutadas y metadatos de Google Colab, por lo que el repositorio no contiene exclusivamente cuadernos "limpios".
 - Algunos notebooks son explícitamente "GPU-first" o están optimizados para Colab, aunque varios declaran también rutas de ejecución en CPU.
 - Las prácticas de cuantización y algunos notebooks generativos usan o intentan usar `bitsandbytes`; en CPU o en Windows puede ser necesario recurrir a las rutas alternativas previstas por los propios cuadernos.
