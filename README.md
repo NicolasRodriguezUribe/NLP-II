@@ -1,13 +1,13 @@
 # NLP-II: cuadernos docentes de procesamiento del lenguaje natural con Transformers y LLM
 
 ## Introducción
-Autor: Nicolás Rodríguez Uribe
-Fecha de última actualización: 13/04/2026
-Material docente en abierto de la Universidad Rey Juan Carlos
-Asignatura: Procesamiento del Lenguaje Natural II
-Grado en Inteligencia Artificial
-Licencia: **GNU General Public License, versión 3 (GPL-3.0)**.
-Depósito URJC: https://burjcdigital.urjc.es/items/e7f1b47d-be39-4e11-ab68-487bc9278099
+- Autor: Nicolás Rodríguez Uribe
+- Fecha de última actualización: 13/04/2026
+- Material docente en abierto de la Universidad Rey Juan Carlos
+- Asignatura: Procesamiento del Lenguaje Natural II
+- Grado en Inteligencia Artificial
+- Licencia: **GNU General Public License, versión 3 (GPL-3.0)**.
+- Depósito URJC: https://burjcdigital.urjc.es/items/e7f1b47d-be39-4e11-ab68-487bc9278099
 
 ## Descripción
 Este repositorio reúne cuadernos Jupyter para la docencia práctica de la asignatura `NLP-II`. El conjunto cubre tareas de procesamiento del lenguaje natural basadas en modelos Transformer y modelos generativos, con materiales orientados a entrenamiento, evaluación, comparación de estrategias y experimentación reproducible.
